@@ -1,2 +1,5 @@
-# action-checkout-jdk-sbt-cache
-Checkout Repo / Set JDK {input} / sbt-cache by SO
+# action-checkout-jdk-8-sbt-cache
+Action with steps:
+- Checkout 
+- Setup JDK 8 
+- sbt-cache by SO
