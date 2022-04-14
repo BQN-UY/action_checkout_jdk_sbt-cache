@@ -1,5 +1,5 @@
-# action-checkout-jdk-8-sbt-cache
+# action_checkout_jdk_sbt-cache
 Action with steps:
 - Checkout 
-- Setup JDK 8 
+- Setup JDK (input version) 
 - sbt-cache by SO
