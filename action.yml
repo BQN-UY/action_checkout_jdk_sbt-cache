@@ -1,5 +1,5 @@
-name: 'setup jdk8 and sbt cache'
-description: 'Checkout Repo / Setup JDK 8 / sbt-cache by SO'
+name: 'setup jdk and sbt cache'
+description: 'Checkout Repo / Setup JDK / sbt-cache by SO'
 
 inputs:
   token:
@@ -9,24 +9,28 @@ inputs:
     required: false
     description: 'fetch-depth to checkout repo'
     default: '1'
+  jdk-version:
+    required: false
+    description: 'jdk version'
+    default: '8'
 
 runs:
   using: "composite"
   steps:
     - name: Clone Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         fetch-depth: ${{ inputs.fetch-depth }}
         token: ${{ inputs.token }}
 
-    - name: Setup JDK 1.8
-      uses: actions/setup-java@v2
+    - name: Set up JDK ${{ inputs.jdk-version }}
+      uses: actions/setup-java@v1
       with:
         distribution: 'adopt'
-        java-version: '8'
+        java-version: ${{ inputs.jdk-version }}
 
     - name: SBT Cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           ~/.sbt
@@ -34,3 +38,4 @@ runs:
           ~/.coursier
           ~/.cache/coursier
         key: sbt-cache-${{ runner.os }}-${{ matrix.target-platform }}-${{ hashFiles('project/build.properties') }}
+
