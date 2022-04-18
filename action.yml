@@ -27,7 +27,7 @@ runs:
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
-        java-version: ${{ inputs.jdk-version }}
+        java-version: '8'
 
     - name: SBT Cache
       uses: actions/cache@v3
