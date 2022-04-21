@@ -27,7 +27,7 @@ runs:
       uses: actions/setup-java@v3
       with:
         distribution: 'adopt'
-        java-version: '8'
+        java-version: ${{ inputs.jdk-version }}
 
     - name: SBT Cache
       uses: actions/cache@v3
